@@ -46,6 +46,17 @@ var mCurrentIndex = 0;
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 
+mRequest.addEventListener("readystatechange", () => {
+  // console.log(request, request.readyState);
+  if (mRequest.readyState === 4 && request.status === 200) {
+    console.log(request, request.responseText);
+  } else if (request.readyState === 4) {
+    console.log("could not fetch the data");
+  }
+});
+
+mRequest.open("GET", "../images.json");
+mRequest.send();
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
